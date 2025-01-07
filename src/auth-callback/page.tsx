@@ -1,5 +1,6 @@
 import { trpc } from "@/app/_trpc/client"
 import { useRouter, useSearchParams } from "next/navigation"
+import { useEffect } from "react"
 
 const Page = async () => {
   const router = useRouter()
