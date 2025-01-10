@@ -1,5 +1,6 @@
 import Navbar from "@/components/Navbar"
 import Providers from "@/components/Providers"
+import { Toaster } from "@/components/ui/toaster" // Import Toaster instead of Toast
 import { cn } from "@/lib/utils"
 import type { Metadata } from "next"
 import { Inter } from "next/font/google"
@@ -24,6 +25,7 @@ export default function RootLayout({
         <body className={cn("min-h-screen font-sans antialiased grainy", inter.className)}>
           <Navbar />
           {children}
+          <Toaster /> 
         </body>
       </Providers>
     </html>
