@@ -1,36 +1,61 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# 🧠 Conversable
 
-## Getting Started
+## 📝 Description
 
-First, run the development server:
+Conversable is a **document-based conversational AI** tool enabling users to **upload PDFs and interact** with the content through natural language queries. Built with **performance, scalability, and user experience** in mind!
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+## 🛠️ Tech Stack
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+- **Frontend**: Next.js, TailwindCSS, shadcn-ui  
+- **Backend**: tRPC, Prisma, PostgreSQL  
+- **AI**: LangChain, Pinecone (Vector Storage)  
+- **Authentication**: Kinde  
+- **Payments**: Stripe (Free & Pro Plans)  
+- **Other Features**:  
+  - Infinite message loading  
+  - Real-time streaming API responses  
+  - PDF viewer  
+  - Optimistic UI updates  
+  - Drag-and-drop uploads  
+  - Instant loading states  
+- **Language**: 100% TypeScript  
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## 🏃🏼‍➡️ Getting Started
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+1. Clone the repository:
 
-## Learn More
+   ```bash
+   git clone https://github.com/lottekvalheim/conversable.git
+   ```
 
-To learn more about Next.js, take a look at the following resources:
+2. Navigate to the project directory:
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+    ```bash
+    cd conversable
+    ```
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+3. Install dependencies:
 
-## Deploy on Vercel
+    ```bash
+    pnpm install
+    ```
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+4. Set up environment variables:
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+    ```bash
+    cp .env.example .env.local
+    ```
+
+    Update the `.env.local` file with your own environment variables. Follow the `.env.example` file to configure your Kinde, Stripe, Pinecone, and database credentials.
+
+5. Start the development server:
+
+    ```bash
+    pnpm dev
+    ```
+
+## 👋🏼 Developer Information
+
+Conversable was built as a personal project to explore modern SaaS development with an emphasis on conversational AI and exceptional user experience. Feel free to explore, contribute, or reach out with feedback.
+
+Created by Lotte Kvalheim | [GitHub](https://github.com/lottekvalheim) | [LinkedIn](https://www.linkedin.com/in/lotte-kvalheim/)
