@@ -9,7 +9,7 @@ import { useRouter } from "next/navigation"
 import { useState } from "react"
 import Dropzone from "react-dropzone"
 import { Button } from "./ui/button"
-import { DialogContent, DialogTrigger } from "./ui/dialog"
+import { DialogContent, DialogTitle, DialogTrigger } from "./ui/dialog"
 import { Progress } from "./ui/progress"
 
 const UploadDropzone = () => {
@@ -140,6 +140,7 @@ const UploadButton = () => {
         <Button>Upload PDF</Button>
       </DialogTrigger>
       <DialogContent>
+        <DialogTitle className="opacity-0">PDF dialog</DialogTitle>
         <UploadDropzone />
       </DialogContent>
     </Dialog>

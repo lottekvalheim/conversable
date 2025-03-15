@@ -7,9 +7,11 @@ import { useState } from "react"
 import Skeleton from "react-loading-skeleton"
 import UploadButton from "./UploadButton"
 import { Button } from "./ui/button"
+import { Dialog, DialogContent, DialogTitle, DialogTrigger } from "./ui/dialog"
 
 const Dashboard = () => {
   const [currentlyDeletingFile, setCurrentlyDeletingFile] = useState<string | null>(null)
+  const [deleteDialogOpenFileId, setDeleteDialogOpenFileId] = useState<string | null>(null)
   const utils = trpc.useUtils()
   const { data: files, isLoading } = trpc.getUserFiles.useQuery()
   const { mutate: deleteFile } = trpc.deleteFile.useMutation({
@@ -60,18 +62,42 @@ const Dashboard = () => {
                     mocked
                   </div>
 
-                  <Button
-                    onClick={() => deleteFile({ id: file.id })}
-                    size="sm"
-                    className="w-full"
-                    variant="destructive"
+                  {/* Delete confirmation dialog */}
+                  <Dialog
+                    open={deleteDialogOpenFileId === file.id}
+                    onOpenChange={(open) => {
+                      // Set state: if open, mark this file id; if closed, reset state.
+                      setDeleteDialogOpenFileId(open ? file.id : null)
+                    }}
                   >
-                    {currentlyDeletingFile === file.id ? (
-                      <Loader2 className="h-4 w-4 animate-spin" />
-                    ) : (
-                      <Trash className="h-4 w-4 " />
-                    )}
-                  </Button>
+                    <DialogTrigger asChild>
+                      <Button size="sm" className="w-full" variant="destructive">
+                        {currentlyDeletingFile === file.id ? (
+                          <Loader2 className="h-4 w-4 animate-spin" />
+                        ) : (
+                          <Trash className="h-4 w-4" />
+                        )}
+                      </Button>
+                    </DialogTrigger>
+                    <DialogContent>
+                      <DialogTitle>Confirm Deletion</DialogTitle>
+                      <p>Are you sure you want to delete this file?</p>
+                      <div className="flex justify-end gap-2 mt-4">
+                        <Button variant="ghost" onClick={() => setDeleteDialogOpenFileId(null)}>
+                          Cancel
+                        </Button>
+                        <Button
+                          variant="destructive"
+                          onClick={() => {
+                            deleteFile({ id: file.id })
+                            setDeleteDialogOpenFileId(null)
+                          }}
+                        >
+                          Delete
+                        </Button>
+                      </div>
+                    </DialogContent>
+                  </Dialog>
                 </div>
               </li>
             ))}
