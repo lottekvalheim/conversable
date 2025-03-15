@@ -10,12 +10,14 @@ interface PageProps {
 }
 const Page = async ({ params }: PageProps) => {
   // retrive the file id
-  const { fileid } = params
+  const { fileid } = await Promise.resolve(params)
 
   const { getUser } = getKindeServerSession()
-  const user = getUser()
+  const user = await getUser()
 
-  if (!user || !(await user).id) redirect(`/auth-callback?origin=/dashboard/${fileid}`)
+  if (!user?.id) {
+    redirect(`/auth-callback?origin=/dashboard/${params.fileid}`)
+  }
 
   // make database call
   const file = await db.file.findFirst({

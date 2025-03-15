@@ -6,6 +6,7 @@ import { useResizeDetector } from "react-resize-detector"
 import SimpleBar from "simplebar-react"
 import { Button } from "./ui/button"
 import { Dialog, DialogContent, DialogTrigger } from "./ui/dialog"
+import { DialogTitle } from "@radix-ui/react-dialog"
 
 interface PdfFullscreenProps {
   fileUrl: string
@@ -34,6 +35,7 @@ const PdfFullscreen = ({ fileUrl }: PdfFullscreenProps) => {
         </Button>
       </DialogTrigger>
       <DialogContent className="max-w-7xl w-full">
+        <DialogTitle className="opacity-0">PDF Viewer</DialogTitle>
         <SimpleBar autoHide={false} className="max-h-[calc-100vh-10rem] mt-6">
           {/* PDF content */}
           <div ref={ref}>
